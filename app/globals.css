@@ -1,26 +1,200 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Base styles */
+html, body {
+  background-color: black;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out both;
+}
+
+/* Slide up (for heading) */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.9s ease-out both;
+}
+
+/* Slide in from right (for text) */
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 1s ease-out both;
+  animation-delay: 0.2s;
+}
+
+/* Image reveal (cinematic) */
+@keyframes image-reveal {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-image-reveal {
+  animation: image-reveal 1.2s ease-out both;
+}
+
+/* ================= HERO ANIMATIONS ================= */
+
+/* Cinematic zoom-out */
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-hero-zoom {
+  animation: hero-zoom 1.8s ease-out both;
+}
+
+/* Title reveal */
+@keyframes hero-title {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-title {
+  animation: hero-title 0.9s ease-out both;
+  animation-delay: 0.3s;
+}
+
+/* Subtitle reveal */
+.animate-hero-subtitle {
+  animation: hero-title 0.9s ease-out both;
+  animation-delay: 0.55s;
+}
+
+/* ================= GALLERY ANIMATIONS ================= */
+
+/* Lift + blur reveal (luxury feel) */
+@keyframes gallery-item {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-gallery-item {
+  animation: gallery-item 0.8s ease-out both;
+}
+
+/* ================= SERVICES PAGE ================= */
+
+/* Soft floating background */
+@keyframes slow-float {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-18px) scale(1.03);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-slow-float {
+  animation: slow-float 14s ease-in-out infinite;
+}
+
+/* Title reveal */
+@keyframes services-title {
+  from {
+    opacity: 0;
+    letter-spacing: 0.4em;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.08em;
+  }
+}
+
+.animate-services-title {
+  animation: services-title 1s ease-out both;
+}
+
+/* Subtitle fade up */
+@keyframes services-subtitle {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-services-subtitle {
+  animation: services-subtitle 0.8s ease-out both;
+  animation-delay: 0.3s;
+}
+
+/* Cards animation */
+@keyframes service-card {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-card {
+  animation: service-card 0.8s ease-out both;
 }
