@@ -3,13 +3,13 @@ import Image from "next/image";
 
 const categories = [
   {
-    name: "Men",
-    slug: "men",
+    name: "Male Model",
+    slug: "male-model",
     image: "/images/portfolio/men-01.jpg",
   },
   {
-    name: "Women",
-    slug: "women",
+    name: "Female",
+    slug: "female",
     image: "/images/portfolio/women-01.jpg",
   },
   {
@@ -64,7 +64,7 @@ export default function PortfolioPage() {
               style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Background Image */}
-              <div className="relative h-[22rem] sm:h-[26rem] md:h-[28rem]">
+              <div className="relative h-88 sm:h-104 md:h-112">
                 <Image
                   src={category.image}
                   alt={category.name}
