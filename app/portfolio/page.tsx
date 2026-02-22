@@ -1,83 +1,93 @@
-import fs from "fs/promises";
-import path from "path";
+import Link from "next/link";
 import Image from "next/image";
-import { portfolioMeta } from "./portfolio-data";
 
-const IMAGE_DIR = path.join(process.cwd(), "public/images/portfolio");
+const categories = [
+  {
+    name: "Men",
+    slug: "men",
+    image: "/images/portfolio/men-01.jpg",
+  },
+  {
+    name: "Women",
+    slug: "women",
+    image: "/images/portfolio/women-01.jpg",
+  },
+  {
+    name: "Wedding",
+    slug: "wedding",
+    image: "/images/portfolio/wedding-01.jpg",
+  },
+  {
+    name: "Travel",
+    slug: "travel",
+    image: "/images/portfolio/travel-01.jpg",
+  },
+];
 
-export default async function PortfolioPage() {
-  const files = await fs.readdir(IMAGE_DIR);
-
-  const images = files.filter((file) =>
-    /\.(jpg|jpeg|png|webp)$/i.test(file)
-  );
-
+export default function PortfolioPage() {
   return (
-    <main className="px-6 pb-24">
-      {/* ===== HERO SECTION ===== */}
-      <section className="relative h-[55vh] flex items-center justify-center mb-24 overflow-hidden">
-        {/* Background */}
+    <main className="min-h-screen pb-24 scroll-smooth">
+
+      {/* ================= HERO ================= */}
+      <section className="relative h-[60vh] sm:h-[70vh] flex items-center justify-center overflow-hidden">
+        
         <Image
           src="/images/frontImage.jpg"
-          alt="Portfolio cover"
+          alt="Portfolio Hero"
           fill
           priority
           className="object-cover opacity-40 animate-hero-zoom"
         />
 
-        <div className="relative text-center">
-          <h1 className="text-5xl md:text-7xl font-serif tracking-wide animate-hero-title">
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="relative text-center px-6">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-widest animate-hero-title">
             Portfolio
           </h1>
-          <p className="mt-4 text-white/80 text-lg animate-hero-subtitle">
-            Moments • Stories • Light
+          <p className="mt-4 text-white/70 animate-hero-subtitle">
+            Select a collection
           </p>
         </div>
       </section>
 
-      {/* ===== GALLERY ===== */}
-      <section className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
-        {images.map((file, index) => {
-          const meta = portfolioMeta[file];
+      {/* ================= CATEGORY GRID ================= */}
+      <section className="max-w-6xl mx-auto px-6 mt-20">
 
-          return (
-            <figure
-              key={file}
-              className="group animate-gallery-item"
-              style={{
-                animationDelay: `${index * 90}ms`,
-              }}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+          {categories.map((category, index) => (
+            <Link
+              key={category.slug}
+              href={`/portfolio/${category.slug}`}
+              className="group relative overflow-hidden rounded-2xl animate-gallery-item"
+              style={{ animationDelay: `${index * 150}ms` }}
             >
-              {/* Image */}
-              <div className="overflow-hidden">
+              {/* Background Image */}
+              <div className="relative h-87.5 sm:h-100">
                 <Image
-                  src={`/images/portfolio/${file}`}
-                  alt={meta?.title ?? "Photography work"}
-                  width={800}
-                  height={1000}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  src={category.image}
+                  alt={category.name}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
+
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500" />
               </div>
 
-              {/* Text */}
-              {(meta?.title || meta?.description) && (
-                <figcaption className="mt-4 space-y-1">
-                  {meta?.title && (
-                    <h3 className="text-lg font-medium tracking-wide">
-                      {meta.title}
-                    </h3>
-                  )}
-                  {meta?.description && (
-                    <p className="text-sm text-white/70">
-                      {meta.description}
-                    </p>
-                  )}
-                </figcaption>
-              )}
-            </figure>
-          );
-        })}
+              {/* Text Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <h2 className="text-3xl md:text-4xl tracking-widest uppercase">
+                  {category.name}
+                </h2>
+              </div>
+
+            </Link>
+          ))}
+        </div>
+
       </section>
+
     </main>
   );
 }

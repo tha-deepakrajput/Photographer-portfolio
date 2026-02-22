@@ -1,15 +1,9 @@
 export const portfolioMeta: Record<
   string,
-  { title?: string; description?: string }
+  { title?: string; description?: string; category: string }
 > = {
-  "wedding-01.jpg": {
-    title: "Intimate Wedding",
-    description: "A warm, emotional ceremony captured in natural light.",
-  },
-  "portrait-01.jpg": {
-    title: "Studio Portrait",
-  },
-  "travel-01.jpg": {
-    description: "Shot during golden hour in the streets of Jaipur.",
-  },
+  "men-01.jpg": { category: "men" },
+  "women-01.jpg": { category: "women" },
+  "wedding-01.jpg": { category: "wedding" },
+  "travel-01.jpg": { category: "travel" },
 };
