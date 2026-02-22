@@ -5,22 +5,22 @@ const categories = [
   {
     name: "Male Model",
     slug: "male-model",
-    image: "/images/portfolio/men-01.jpg",
+    image: "/images/portfolio/Male.jpg",
   },
   {
     name: "Female",
     slug: "female",
-    image: "/images/portfolio/women-01.jpg",
+    image: "/images/portfolio/Female.jpg",
   },
   {
     name: "Wedding",
     slug: "wedding",
-    image: "/images/portfolio/wedding-01.jpg",
+    image: "/images/portfolio/Wedding.jpg",
   },
   {
     name: "Travel",
     slug: "travel",
-    image: "/images/portfolio/travel-01.jpg",
+    image: "/images/portfolio/Travel.jpg",
   },
 ];
 
