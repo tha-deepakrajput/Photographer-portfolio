@@ -9,7 +9,7 @@ export default function Hero() {
 
       {/* ===== BACKGROUND IMAGE (CINEMATIC ZOOM) ===== */}
       <motion.div
-        className="absolute inset-0 bg-[url('/images/photographer.jpg')] bg-cover bg-center"
+        className="absolute inset-0 bg-[url('/images/Photographer.jpg')] bg-cover bg-center"
         initial={{ scale: 1.15 }}
         animate={{ scale: 1 }}
         transition={{ duration: 12, ease: "easeOut" }}

@@ -29,13 +29,14 @@ export default function PortfolioPage() {
     <main className="min-h-screen pb-24 scroll-smooth">
 
       {/* ================= HERO ================= */}
-      <section className="relative h-[60vh] sm:h-[70vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[60vh] sm:h-[70vh] md:h-[75vh] flex items-center justify-center overflow-hidden">
         
         <Image
           src="/images/frontImage.jpg"
           alt="Portfolio Hero"
           fill
           priority
+          sizes="100vw"
           className="object-cover opacity-40 animate-hero-zoom"
         />
 
@@ -63,11 +64,12 @@ export default function PortfolioPage() {
               style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Background Image */}
-              <div className="relative h-87.5 sm:h-100">
+              <div className="relative h-[22rem] sm:h-[26rem] md:h-[28rem]">
                 <Image
                   src={category.image}
                   alt={category.name}
                   fill
+                  sizes="(max-width: 640px) 100vw, 50vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
@@ -77,7 +79,7 @@ export default function PortfolioPage() {
 
               {/* Text Overlay */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <h2 className="text-3xl md:text-4xl tracking-widest uppercase">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl tracking-widest uppercase">
                   {category.name}
                 </h2>
               </div>
