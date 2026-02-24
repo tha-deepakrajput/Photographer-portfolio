@@ -8,8 +8,8 @@ const categories = [
     image: "/images/portfolio/Male.jpg",
   },
   {
-    name: "Female",
-    slug: "female",
+    name: "Female Modal",
+    slug: "female-modal",
     image: "/images/portfolio/Female.jpg",
   },
   {

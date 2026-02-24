@@ -25,7 +25,7 @@ export default async function CategoryPage({
 
   const images = files
     .filter((file) => /\.(jpg|jpeg|png|webp)$/i.test(file))
-    .sort();
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
   if (!images.length) return notFound();
 

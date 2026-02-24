@@ -34,7 +34,7 @@ export default function Lightbox({ images, category }: LightboxProps) {
 
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [activeIndex]);
+  });
 
   return (
     <>
