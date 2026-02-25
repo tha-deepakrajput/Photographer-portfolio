@@ -127,7 +127,7 @@ export default function ContactPage() {
           className="flex justify-center gap-6 mt-12"
         >
           <a
-            href="https://instagram.com/thejourneycreator_"
+            href="https://instagram.com/feel_amann_"
             target="_blank"
             rel="noopener noreferrer"
             className="text-pink-500 hover:scale-125 transition-transform duration-300"

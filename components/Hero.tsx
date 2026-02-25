@@ -115,7 +115,7 @@ export default function Hero() {
         >
           {/* Instagram */}
           <a
-            href="https://instagram.com/thejourneycreator_"
+            href="https://instagram.com/feel_amann_"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full bg-linear-to-tr from-pink-500 via-red-500 to-yellow-500 hover:scale-110 transition duration-300 shadow-lg"
