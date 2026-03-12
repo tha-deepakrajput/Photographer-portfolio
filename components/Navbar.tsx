@@ -32,6 +32,9 @@ export default function Navbar() {
 
         {/* ===== DESKTOP LINKS ===== */}
         <div className="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
+          <Link href="/" className="hover:text-white/70 transition">
+            Home
+          </Link>
           <Link href="/portfolio" className="hover:text-white/70 transition">
             Portfolio
           </Link>
@@ -77,6 +80,9 @@ export default function Navbar() {
             className="md:hidden bg-black/95 backdrop-blur-lg"
           >
             <div className="flex flex-col items-center space-y-8 py-16 text-lg uppercase tracking-widest">
+              <Link href="/" onClick={() => setIsOpen(false)}>
+                Home
+              </Link>
               <Link href="/portfolio" onClick={() => setIsOpen(false)}>
                 Portfolio
               </Link>

@@ -3,156 +3,123 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Instagram, Linkedin, Facebook, Mail } from "lucide-react";
+import { JSX } from "react";
 
-export default function Hero() {
+export default function Hero(): JSX.Element {
   return (
-    <section className="relative min-h-svh flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-svh flex items-center justify-center overflow-hidden bg-black text-white">
 
-      {/* ===== BACKGROUND IMAGE ===== */}
-      <motion.div
-        className="absolute inset-0 bg-[url('/images/Photographer.jpg')] bg-cover bg-center"
-        initial={{ scale: 1.15 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 12, ease: "easeOut" }}
-      />
-
-      {/* ===== DARK OVERLAY ===== */}
-      <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-black/90" />
-
-      {/* ===== CONTENT WRAPPER ===== */}
-      <motion.div
-        className="
-          relative z-10
-          w-[92%] sm:w-[85%] md:w-[70%] lg:w-[55%]
-          max-w-4xl
-          px-6 sm:px-10 lg:px-14
-          py-10 sm:py-14 lg:py-16
-          text-center
-          bg-white/5
-          backdrop-blur-xl
-          border border-white/10
-          rounded-2xl
-          shadow-2xl
-        "
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: {},
-          visible: { transition: { staggerChildren: 0.25 } },
-        }}
+      {/* ===== BACKGROUND VIDEO ===== */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
       >
+        <source src="/images/Videos/Video-2.mp4" type="video/mp4" />
+      </video>
 
+      {/* ===== LIGHT OVERLAY (Less Dark for Clear Video) ===== */}
+      <div className="absolute inset-0 bg-black/40" />
+
+      {/* ===== MAIN CONTENT ===== */}
+      <motion.div
+        className="relative z-10 text-center px-6 max-w-4xl"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
         {/* TITLE */}
-        <motion.h1
+        <h1
           className="
             font-serif
-            font-medium
-            tracking-[0.2em]
-            leading-tight
-            text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
+            text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+            tracking-[0.3em]
+            font-semibold
+            drop-shadow-[0_5px_25px_rgba(0,0,0,0.7)]
           "
-          variants={{
-            hidden: { opacity: 0, y: 50 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          transition={{ duration: 1 }}
         >
           Feel Amann
-        </motion.h1>
+        </h1>
 
         {/* SUBTITLE */}
-        <motion.p
+        <p
           className="
             mt-6
-            text-sm sm:text-base md:text-lg lg:text-xl
-            text-white/80
-            leading-relaxed
+            text-base sm:text-lg md:text-xl
+            text-white/85
             max-w-2xl mx-auto
+            leading-relaxed
+            drop-shadow-[0_4px_20px_rgba(0,0,0,0.7)]
           "
-          variants={{
-            hidden: { opacity: 0, y: 30 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          transition={{ duration: 0.9 }}
         >
-          Capturing stories through light, emotion, and timeless moments
-        </motion.p>
+          Capturing stories through motion, emotion, and timeless frames.
+        </p>
 
-        {/* CTA */}
-        <motion.div
-          className="mt-10"
-          variants={{
-            hidden: { opacity: 0, y: 25 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          transition={{ duration: 0.9 }}
-        >
+        {/* CTA BUTTON */}
+        <div className="mt-10">
           <Link
             href="/portfolio"
             className="
               inline-block
-              px-8 py-4
-              text-sm tracking-wider
-              border border-white/70
+              px-10 py-4
               rounded-full
-              transition-all duration-500
-              hover:bg-white hover:text-black
-              hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]
+              bg-white text-black
+              font-medium
+              tracking-wider
+              hover:scale-105
+              hover:bg-gray-200
+              transition duration-500
+              shadow-2xl
             "
           >
-            Visit Portfolio & Book a Shoot
+            View Portfolio
           </Link>
-        </motion.div>
-
-        {/* ===== SOCIAL ICONS ===== */}
-        <motion.div
-          className="mt-12 flex justify-center gap-6"
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          transition={{ duration: 1 }}
-        >
-          {/* Instagram */}
-          <a
-            href="https://instagram.com/feel_amann_"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-full bg-linear-to-tr from-pink-500 via-red-500 to-yellow-500 hover:scale-110 transition duration-300 shadow-lg"
-          >
-            <Instagram className="text-white" size={20} />
-          </a>
-
-          {/* LinkedIn */}
-          <a
-            href="https://linkedin.com/in/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-full bg-[#0A66C2] hover:scale-110 transition duration-300 shadow-lg"
-          >
-            <Linkedin className="text-white" size={20} />
-          </a>
-
-          {/* Facebook */}
-          <a
-            href="https://facebook.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-full bg-[#1877F2] hover:scale-110 transition duration-300 shadow-lg"
-          >
-            <Facebook className="text-white" size={20} />
-          </a>
-
-          {/* Email */}
-          <a
-            href="mailto:youremail@example.com"
-            className="p-3 rounded-full bg-gray-700 hover:bg-gray-600 hover:scale-110 transition duration-300 shadow-lg"
-          >
-            <Mail className="text-white" size={20} />
-          </a>
-        </motion.div>
-
+        </div>
       </motion.div>
+
+      {/* ===== SOCIAL MEDIA (BOTTOM LEFT VERTICAL) ===== */}
+      <div className="absolute left-6 bottom-10 z-20 flex flex-col gap-4">
+        <a
+          href="https://instagram.com/feel_amann_"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:scale-110 transition duration-300"
+        >
+          <Instagram size={22} />
+        </a>
+
+        <a
+          href="https://linkedin.com/in/yourusername"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:scale-110 transition duration-300"
+        >
+          <Linkedin size={22} />
+        </a>
+
+        <a
+          href="https://facebook.com/yourusername"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:scale-110 transition duration-300"
+        >
+          <Facebook size={22} />
+        </a>
+
+        <a
+          href="mailto:youremail@example.com"
+          className="hover:scale-110 transition duration-300"
+        >
+          <Mail size={22} />
+        </a>
+      </div>
+
+      {/* ===== SIDE DECORATIVE LINE (Premium Touch) ===== */}
+      <div className="absolute left-9 bottom-32 h-24 w-[1px] bg-white/40" />
+
     </section>
   );
 }
