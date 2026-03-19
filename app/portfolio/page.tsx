@@ -15,12 +15,17 @@ const categories = [
   {
     name: "Wedding",
     slug: "wedding",
-    image: "/images/portfolio/Wedding.jpg",
+    image: "/images/portfolio/WeddingDp.JPG",
   },
   {
     name: "Travel",
     slug: "travel",
-    image: "/images/portfolio/Travel.jpg",
+    image: "/images/portfolio/TravelDp.JPG",
+  },
+  {
+    name: "Potraits",
+    slug: "potrait",
+    image: "/images/portfolio/Potrait.jpg",
   },
 ];
 
