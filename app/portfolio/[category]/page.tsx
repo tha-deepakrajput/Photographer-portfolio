@@ -1,7 +1,8 @@
-import fs from "fs/promises";
-import path from "path";
 import { notFound } from "next/navigation";
 import Lightbox from "@/components/Lightbox";
+import { db } from "@/lib/db";
+import { images } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
 
 export default async function CategoryPage({
   params,
@@ -10,24 +11,16 @@ export default async function CategoryPage({
 }) {
   const { category } = await params;
 
-  const IMAGE_DIR = path.join(
-    process.cwd(),
-    `public/images/portfolio/${category}`
-  );
+  const categoryImages = await db
+    .select()
+    .from(images)
+    .where(eq(images.categorySlug, category))
+    .orderBy(images.createdAt);
 
-  let files: string[];
+  if (!categoryImages.length) return notFound();
 
-  try {
-    files = await fs.readdir(IMAGE_DIR);
-  } catch {
-    return notFound();
-  }
-
-  const images = files
-    .filter((file) => /\.(jpg|jpeg|png|webp)$/i.test(file))
-    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
-
-  if (!images.length) return notFound();
+  // Extract just the URLs for the Lightbox component
+  const imageUrls = categoryImages.map((img) => img.url);
 
   return (
     <main className="bg-black text-white pb-24">
@@ -35,14 +28,14 @@ export default async function CategoryPage({
       {/* HERO */}
       <section className="text-center pt-28 pb-20">
         <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-widest uppercase">
-          {category}
+          {category.replace(/-/g, " ")}
         </h1>
         <div className="w-24 h-px bg-white/40 mx-auto mt-6" />
       </section>
 
       {/* GALLERY */}
       <section className="max-w-7xl mx-auto px-6">
-        <Lightbox images={images} category={category} />
+        <Lightbox images={imageUrls} />
       </section>
 
     </main>

@@ -1,12 +1,30 @@
-import Image from "next/image";
 
-const images = [
-  "/images/Gallery/cover-1.jpg",
-  "/images/Gallery/cover-2.jpg",
-  "/images/Gallery/cover-3.jpg",
-];
+import CldImageWrapper from "@/components/CldImageWrapper";
+import { db } from "@/lib/db";
+import { images } from "@/lib/db/schema";
+import { eq, or } from "drizzle-orm";
 
-export default function Gallery() {
+export default async function Gallery() {
+  let featuredImages: typeof images.$inferSelect[] = [];
+
+  try {
+    featuredImages = await db
+      .select()
+      .from(images)
+      .where(
+        or(
+          eq(images.isFeatured, true),
+          eq(images.categorySlug, "featured-images")
+        )
+      )
+      .orderBy(images.createdAt);
+  } catch {
+    console.warn("Database connection failed in Gallery (Likely internet stability issue), hiding gallery safely.");
+    return null;
+  }
+
+  if (featuredImages.length === 0) return null;
+
   return (
     <section className="bg-black text-white py-20 sm:py-28 px-6 sm:px-10">
       <div className="max-w-7xl mx-auto">
@@ -27,9 +45,9 @@ export default function Gallery() {
           lg:grid-cols-3
           gap-10 md:gap-14
         ">
-          {images.map((src, i) => (
+          {featuredImages.map((img, i) => (
             <div
-              key={i}
+              key={img.id}
               className="group transition duration-500 hover:-translate-y-2"
             >
               <div className="
@@ -41,9 +59,9 @@ export default function Gallery() {
                 shadow-black/60
               ">
                 <div className="relative aspect-4/5">
-                  <Image
-                    src={src}
-                    alt="portfolio"
+                  <CldImageWrapper
+                    src={img.url}
+                    alt={img.title || "portfolio"}
                     fill
                     sizes="
                       (max-width: 640px) 100vw,

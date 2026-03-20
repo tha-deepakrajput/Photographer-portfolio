@@ -16,7 +16,7 @@ export default function ContactPage() {
 
       {/* ===== PREMIUM BACKGROUND IMAGE ===== */}
       <Image
-        src="/images/hero.jpg"
+        src="/images/Contact.jpg"
         alt="Contact background"
         fill
         priority

@@ -6,7 +6,7 @@ export default function AboutPage() {
 
       {/* Background */}
       <Image
-        src="/images/hero.jpg"
+        src="/images/AboutBackground.jpg"
         alt="About background"
         fill
         priority
@@ -33,7 +33,7 @@ export default function AboutPage() {
           {/* Portrait Image */}
           <div className="relative w-full max-w-md sm:max-w-lg mx-auto md:mx-0 animate-image-reveal">
             <Image
-              src="/images/portfolio/fashion-01.jpg"
+              src="/images/About.jpg"
               alt="Photographer portrait"
               width={600}
               height={750}

@@ -1,35 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
+import { db } from "@/lib/db";
+import { categories } from "@/lib/db/schema";
+import { ne } from "drizzle-orm";
 
-const categories = [
-  {
-    name: "Male Model",
-    slug: "male-model",
-    image: "/images/portfolio/Male.jpg",
-  },
-  {
-    name: "Female Modal",
-    slug: "female-modal",
-    image: "/images/portfolio/Female.jpg",
-  },
-  {
-    name: "Wedding",
-    slug: "wedding",
-    image: "/images/portfolio/WeddingDp.JPG",
-  },
-  {
-    name: "Travel",
-    slug: "travel",
-    image: "/images/portfolio/TravelDp.JPG",
-  },
-  {
-    name: "Potraits",
-    slug: "potrait",
-    image: "/images/portfolio/Potrait.jpg",
-  },
-];
+export default async function PortfolioPage() {
+  const allCategories = await db
+    .select()
+    .from(categories)
+    .where(ne(categories.slug, "featured-images"))
+    .orderBy(categories.createdAt);
 
-export default function PortfolioPage() {
   return (
     <main className="min-h-screen pb-24 scroll-smooth">
 
@@ -37,11 +18,12 @@ export default function PortfolioPage() {
       <section className="relative h-[60vh] sm:h-[70vh] md:h-[75vh] flex items-center justify-center overflow-hidden">
         
         <Image
-          src="/images/frontImage.jpg"
+          src="/images/PortfolioImage.jpg"
           alt="Portfolio Hero"
           fill
           priority
           sizes="100vw"
+          unoptimized={true}
           className="object-cover opacity-40 animate-hero-zoom"
         />
 
@@ -61,7 +43,7 @@ export default function PortfolioPage() {
       <section className="max-w-6xl mx-auto px-6 mt-20">
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-          {categories.map((category, index) => (
+          {allCategories.map((category, index) => (
             <Link
               key={category.slug}
               href={`/portfolio/${category.slug}`}
@@ -71,10 +53,11 @@ export default function PortfolioPage() {
               {/* Background Image */}
               <div className="relative h-88 sm:h-104 md:h-112">
                 <Image
-                  src={category.image}
+                  src={category.coverImage}
                   alt={category.name}
                   fill
                   sizes="(max-width: 640px) 100vw, 50vw"
+                  unoptimized={true}
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 

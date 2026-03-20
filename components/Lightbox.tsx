@@ -1,14 +1,13 @@
 "use client";
 
-import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 import { useState, useEffect } from "react";
 
 interface LightboxProps {
-  images: string[];
-  category: string;
+  images: string[]; // Full URLs now (e.g. "/images/portfolio/wedding/photo1.jpg" or external URLs)
 }
 
-export default function Lightbox({ images, category }: LightboxProps) {
+export default function Lightbox({ images }: LightboxProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const close = () => setActiveIndex(null);
@@ -40,19 +39,19 @@ export default function Lightbox({ images, category }: LightboxProps) {
     <>
       {/* MASONRY GRID */}
       <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-8 space-y-8">
-        {images.map((file, index) => (
+        {images.map((src, index) => (
           <div
-            key={file}
+            key={`${src}-${index}`}
             className="break-inside-avoid cursor-pointer group"
             onClick={() => setActiveIndex(index)}
           >
-            <div className="overflow-hidden rounded-xl bg-neutral-900 shadow-xl shadow-black/40">
-              <Image
-                src={`/images/portfolio/${category}/${file}`}
+            <div className="overflow-hidden rounded-xl bg-neutral-900 shadow-xl shadow-black/40 relative">
+              <CldImage
+                src={src}
                 alt="preview"
-                width={0}
-                height={0}
-                sizes="100vw"
+                width={800}
+                height={800}
+                preserveTransformations
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
               />
             </div>
@@ -88,12 +87,12 @@ export default function Lightbox({ images, category }: LightboxProps) {
             className="relative max-w-[95vw] max-h-[90vh] w-auto h-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={`/images/portfolio/${category}/${images[activeIndex]}`}
+            <CldImage
+              src={images[activeIndex]}
               alt="Full Preview"
-              width={0}
-              height={0}
-              sizes="100vw"
+              width={1920}
+              height={1920}
+              preserveTransformations
               className="max-w-[95vw] max-h-[90vh] w-auto h-auto object-contain"
               priority
             />

@@ -1,8 +1,9 @@
+export const dynamic = "force-dynamic";
+
 import Hero from "@/components/Hero";
 import Gallery from "@/components/Gallery";
 import Testimonial from "@/components/Testimonial";
 import VideoSection from "@/components/VideoSection";
-import ImageSection from "@/components/ImageSection";
 
 export default function Home() {
   return (
