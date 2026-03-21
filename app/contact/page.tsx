@@ -8,6 +8,7 @@ import {
   FaLinkedin,
   FaFacebook,
   FaTwitter,
+  FaBehance,
 } from "react-icons/fa";
 
 export default function ContactPage() {
@@ -112,10 +113,10 @@ export default function ContactPage() {
         <p className="text-center text-white/60 mt-10 text-sm sm:text-base">
           Or email directly at{" "}
           <a
-            href="mailto:feelamann@gmail.com"
+            href="mailto:Feelphotography8368@gmail.com"
             className="text-white hover:underline"
           >
-            feelamann@gmail.com
+            feelphotography8368@gmail.com
           </a>
         </p>
 
@@ -136,30 +137,21 @@ export default function ContactPage() {
           </a>
 
           <a
-            href="https://linkedin.com/"
+            href="https://www.behance.net/tarunrajput15"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:scale-125 transition-transform duration-300"
+          >
+            <FaBehance size={28} />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/aman-singh-620229334?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 hover:scale-125 transition-transform duration-300"
           >
             <FaLinkedin size={28} />
-          </a>
-
-          <a
-            href="https://facebook.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:scale-125 transition-transform duration-300"
-          >
-            <FaFacebook size={28} />
-          </a>
-
-          <a
-            href="https://twitter.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sky-400 hover:scale-125 transition-transform duration-300"
-          >
-            <FaTwitter size={28} />
           </a>
         </motion.div>
       </motion.div>

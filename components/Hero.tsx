@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Instagram, Linkedin, Facebook, Mail } from "lucide-react";
+import { FaBehance } from "react-icons/fa";
 import { JSX } from "react";
 
 export default function Hero(): JSX.Element {
@@ -81,7 +82,7 @@ export default function Hero(): JSX.Element {
       </motion.div>
 
       {/* ===== SOCIAL MEDIA (BOTTOM LEFT VERTICAL) ===== */}
-      <div className="absolute left-6 bottom-10 z-20 flex flex-col gap-4">
+      <div className="absolute left-6 bottom-35 z-20 flex flex-col gap-4">
         <a
           href="https://instagram.com/feel_amann_"
           target="_blank"
@@ -92,7 +93,16 @@ export default function Hero(): JSX.Element {
         </a>
 
         <a
-          href="https://linkedin.com/in/yourusername"
+          href="https://www.behance.net/tarunrajput15"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:scale-110 transition duration-300"
+        >
+          <FaBehance size={22} />
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/aman-singh-620229334/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:scale-110 transition duration-300"
@@ -101,16 +111,7 @@ export default function Hero(): JSX.Element {
         </a>
 
         <a
-          href="https://facebook.com/yourusername"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:scale-110 transition duration-300"
-        >
-          <Facebook size={22} />
-        </a>
-
-        <a
-          href="mailto:youremail@example.com"
+          href="mailto:Feelphotography8368@gmail.com"
           className="hover:scale-110 transition duration-300"
         >
           <Mail size={22} />

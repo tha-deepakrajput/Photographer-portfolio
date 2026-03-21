@@ -3,10 +3,9 @@ import Image from "next/image";
 export default function AboutPage() {
   return (
     <main className="relative min-h-screen overflow-hidden">
-
       {/* Background */}
       <Image
-        src="/images/AboutBackground.jpg"
+        src="/images/AboutBackground.JPG"
         alt="About background"
         fill
         priority
@@ -16,7 +15,6 @@ export default function AboutPage() {
 
       {/* Content */}
       <section className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 sm:py-28">
-
         {/* Heading */}
         <div className="mb-14 sm:mb-20 text-center md:text-left animate-slide-up">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif tracking-wide">
@@ -29,11 +27,10 @@ export default function AboutPage() {
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-
           {/* Portrait Image */}
           <div className="relative w-full max-w-md sm:max-w-lg mx-auto md:mx-0 animate-image-reveal">
             <Image
-              src="/images/About.jpg"
+              src="/images/AboutBackground1.JPG"
               alt="Photographer portrait"
               width={600}
               height={750}
@@ -43,11 +40,9 @@ export default function AboutPage() {
 
           {/* Text Content */}
           <div className="space-y-6 text-base sm:text-lg leading-relaxed text-white/90 animate-slide-in-right">
-
             <p>
-              I’m <strong>Alex Morgan</strong>, a professional photographer with
-              over 8 years of experience capturing weddings, portraits, fashion,
-              and travel stories.
+              I’m <strong>Aman Singh</strong>, a professional photographer
+              capturing weddings, portraits, fashion, and travel stories.
             </p>
 
             <p>
@@ -57,8 +52,8 @@ export default function AboutPage() {
             </p>
 
             <p>
-              From intimate weddings to global brands, I collaborate with
-              people who value authenticity, storytelling, and timeless visual
+              From intimate weddings to global brands, I collaborate with people
+              who value authenticity, storytelling, and timeless visual
               identity.
             </p>
 
@@ -66,7 +61,6 @@ export default function AboutPage() {
               “Photography is not just about what you see — it’s about what you
               feel.”
             </p>
-
           </div>
         </div>
       </section>
